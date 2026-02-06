@@ -1,0 +1,43 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: pg_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: pg_api
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: "3001"
+      MONGO_URI: "mongodb://mongodb:27017/playground"
+      # esto es lo que devolvemos al cliente para imageUrl
+      API_BASE_URL: "http://localhost:3001"
+    volumes:
+      - ./api/uploads:/app/uploads
+    depends_on:
+      - mongodb
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: pg_web
+    ports:
+      - "3000:3000"
+    environment:
+      # browser
+      NUXT_PUBLIC_API_BASE: "http://localhost:3001"
+      # SSR dentro del contenedor
+      NUXT_API_INTERNAL_BASE: "http://api:3001"
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:

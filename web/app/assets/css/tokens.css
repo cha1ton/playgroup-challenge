@@ -1,0 +1,28 @@
+:root{
+  /* Paleta Playgroup */
+  --blue-1:#004DFF;
+  --blue-2:#0C98FF;
+  --cyan:#00CCFF;
+  --green:#13E947;
+
+  --black:#000000;
+  --gray-1:#373737;
+  --gray-2:#DFDEDE;
+  --white:#FFFFFF;
+
+  /* UI */
+  --bg: #070A0F;
+  --surface: rgba(255,255,255,.06);
+  --surface-2: rgba(255,255,255,.10);
+  --stroke: rgba(223,222,222,.16);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.72);
+
+  --shadow: 0 18px 50px rgba(0,0,0,.45);
+  --radius: 18px;
+
+  --focus: rgba(12,152,255,.35);
+
+  --brand-grad: linear-gradient(135deg, var(--blue-1), var(--blue-2) 45%, var(--cyan));
+}
